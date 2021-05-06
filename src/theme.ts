@@ -1,46 +1,190 @@
+import {CONSTANTS} from "./constants";
 export const THEME = {
-	fonts: {
-		size: {
-			default: "14px",
-			small: "12px",
-			large: "16px",
-			xtraLarge: "18px"
-		}
-	},
-	padding: {
-		button: {
-			default: "8px 12px",
-			small: "6px 10px",
-			large: "10px 14px",
-			xtraLarge: "12px 16px"
-		}
-	},
-	borders: {
-		buttonBorderRadius: 50
-	},
 	colors: {
-		buttonBgColor: {
-			primary: "rgba(194, 45, 45, 1)",
-			secondary: "rgba(194, 45, 45, .5)",
-			success: "#219653",
-			error: "#EB5757"
+		primary: `${CONSTANTS.primaryColor}`,
+		hover:`${CONSTANTS.hover}`,
+		error:`${CONSTANTS.error}`,
+		info:`${CONSTANTS.info}`,
+		success:`${CONSTANTS.success}`,
+		warning:`${CONSTANTS.warning}`,
+		secondary: `${CONSTANTS.secondaryColor}`,
+		borderColor : `${CONSTANTS.borderColor}`,
+		buttonColorPrimary:`${CONSTANTS.buttonColorPrimary}`,
+		buttonColorSecondary:`${CONSTANTS.buttonColorSecondary}`,
+		lightColor:`${CONSTANTS.lightColor}`,
+		textColor:`${CONSTANTS.textColor}`,
+		transaprantBackground:`${CONSTANTS.transaprantBackground}`,
+		border:`${CONSTANTS.border}`,
+		white: "#ffffff",
+		black: "#000000",
+		gray: {
+		  100: "#F9F9F9",
+		  200: "#8f8f8f",
+		  300: "#9c9c9c",
+		  400: "#a8a8a8",
+		  500: "#828282",
+		  600: "#7a7a7a",
+		  700: "#707070",
+		  800: "#666666",
+		  900: "#5c5c5c",
 		},
-		buttonTextColor: {
-			primary: "rgba(255, 255, 255, 1)",
-			secondary: "rgba(194, 45, 45, 1)",
-			white: "#fff"
-		}
-	},
-	depth: {
-		button: {
-			primary:
-				"0 16px 26px -10px rgb(194 45 45 / 56%),0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 20px -5px rgb(194 45 45 / 20%)",
-			secondary:
-				"0 16px 26px -10px rgb(194 45 45 / 56%),0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 20px -5px rgb(194 45 45 / 20%)",
-			success:
-				"0 16px 26px -10px rgb(33 150 83 / 56%),0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 20px -5px rgb(33 150 83 / 20%)",
-			error:
-				"0 16px 26px -10px rgb(235 87 87 / 56%),0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 20px -5px rgb(235 87 87 / 20%)"
-		}
-	}
+		green: {
+		  100: "#EBF4EC",
+		  200: "#D7EAD9",
+		  300: "#C3DFC7",
+		  400: "#28A138",
+		  500: "#238B31",
+		  600: "#1D7228",
+		  700: "#2B7336",
+		  800: "#25642F",
+		  900: "#1F5126",
+		  1000: "#235C2B",
+		},
+		orange: {
+		  100: "#FDF0E3",
+		  200: "#FAE2C7",
+		  300: "#F8D3AB",
+		  400: "#E98305",
+		  500: "#DC7C05",
+		  600: "#CD7304",
+		  700: "#A25100",
+		  800: "#8F4700",
+		  900: "#753A00",
+		  1000: "#803F00",
+		},
+		graphite: {
+		  100: "#EEEEEE",
+		  200: "#D3D3D3",
+		  300: "#B1B1B1",
+		  400: "#8F8F8F",
+		  500: "#6C6C6C",
+		  600: "#535353",
+		  700: "#4A4A4A",
+		  800: "#3E3E3E",
+		  900: "#363636",
+		},
+		red: {
+		  100: "#FAEAEA",
+		  200: "#F4D2D2",
+		  300: "#EEB9B9",
+		  400: "#D21C1C",
+		  500: "#B91919",
+		  600: "#9D1515",
+		  700: "#970C0C",
+		  800: "#890B0B",
+		  900: "#6D0909",
+		  1000: "#760909",
+		},
+		blue: {
+		  100: "#E8F4FD",
+		  200: "#D0E9FB",
+		  300: "#B4DBF8",
+		  400: "#0172CB",
+		  500: "#0161AC",
+		  600: "#01508E",
+		  700: "#005AA3",
+		  800: "#004F8F",
+		  900: "#003E70",
+		  1000: "#004680",
+		},
+	  },
+	  backgroundColor :{
+			default : "black",
+			light : "lightblue",
+			dark : "darkblue",
+	  },
+	   font:{
+		fontSize: {
+		  default:`${CONSTANTS.defaultFontsize}`,
+		  sm:`${CONSTANTS.smFontsize}`,
+		  lg:`${CONSTANTS.lgFontsize}`,
+		  xl:`${CONSTANTS.xlFontsize}`,
+			10: "10px",
+			12: "12px",
+			14: "14px",
+			16: "16px",
+			20: "20px",
+			24: "24px",
+			28: "28px",
+			32: "32px",
+			40: "40px",
+			48: "48px",
+			60: "60px",
+			72: "72px",
+		  },
+		  fontWeight: {
+			normal: "400",
+			bold: "700",
+			extrabold: "900",
+		  },
+		  fontFamily: {
+			sans: ['"source sans pro"', "helvetica", "arial", "sans-serif"],
+			mono: ['"source code pro"', "monospace"],
+		  }
+	  },
+	  spacing: {
+		default : `${CONSTANTS.defaultSpacing}`,
+		sm : `${CONSTANTS.smSpacing}`,
+		lg : `${CONSTANTS.lgSpacing}`,
+		xl : `${CONSTANTS.xlSpacing}`,
+		0: "0px",
+		1: "1px",
+		2: "2px",
+		4: "4px",
+		8: "8px",
+		12: "12px",
+		16: "16px",
+		20: "20px",
+		24: "24px",
+		28: "28px",
+		32: "32px",
+		36: "36px",
+		40: "40px",
+	  },
+	  position: {
+		  static: "static",
+		  relative: "relative",
+		  absolute: "absolute",
+		  fixed: "fixed",
+		  sticky: "sticky"
+	  },
+	  positionValue: {
+	   top:"top",
+	   bottom:"bottom",
+	   left:"left",
+	   right:"right" 
+	
+	  },
+	
+	  borderRadius: {
+		none: "0",
+		default: `${CONSTANTS.borderRadius}`,
+		md: "4px",
+		lg: "15px",
+		round: "50%",
+	  },
+	  maxWidths: {
+		small: '544px',
+		medium: '768px',
+		large: '1012px',
+		xlarge: '1280px'
+	  },
+	  letterSpacing: {
+		normal: '0',
+		wide: '0.2px'
+	  },
+	  lineHeight: {
+		none: '1',
+		normal: '1.5',
+		tight: '1.25',
+		loose: '2',
+	  },
+	  listStyleType: {
+		none: 'none',
+		disc: 'disc',
+		decimal: 'decimal',
+	  },
+	  size:{
+		  
+	  }
 };
