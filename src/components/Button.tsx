@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { THEME } from "../theme";
 import { CONSTANTS } from "../constants";
+import {rgba} from "./Helper";
 
 export interface ACCENT {
 	primary: "primary";
@@ -53,11 +54,13 @@ const StyledButton = styled.button<ButtonProp>`
 	border-radius: ${(props) => getBorderRadiusStyles(props.rounded)};
 	color: ${(props) => getFontColor(props.accent)};
 	background: ${(props) => getBgColor(props.accent)};
-	
 	&:hover {
+        box-shadow: inset 0 0 0 100em rgb(0 0 0 / 10%);
 		cursor: pointer;
-		box-shadow: none;
-	}
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px ${rgba(THEME.colors.primary , 0.5)} ;
+}
 	&:active {
 		
 	}
