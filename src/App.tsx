@@ -4,7 +4,7 @@ import Button from "./components/Button";
 function App() {
 	return (
 		<div className="app">
-			<Button label="Click me" accent="success" rounded />
+			<Button accent="success" label="submit" rounded="50px" />
 		</div>
 	);
 }
