@@ -69,13 +69,13 @@ const StyledButton = styled.button<ButtonProp>`
 function getFontSize(size: any) {
 	console.log("size",size)
 	var value = THEME.font.fontSize.default;
-	if (size == CONSTANTS.SIZE.default) {
+	if (size == THEME.font.fontSize.default) {
 		value = THEME.font.fontSize.default;
-	} else if (size == CONSTANTS.SIZE.small) {
+	} else if (size == THEME.font.fontSize.sm) {
 		value = THEME.font.fontSize.sm;
-	} else if (size == CONSTANTS.SIZE.large) {
+	} else if (size == THEME.font.fontSize.lg) {
 		value = THEME.font.fontSize.lg;
-	} else if (size == CONSTANTS.SIZE.xtraLarge) {
+	} else if (size == THEME.font.fontSize.xl) {
 		value = THEME.font.fontSize.xl;
 	}
 	return value;
