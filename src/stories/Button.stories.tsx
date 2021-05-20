@@ -5,7 +5,7 @@ import { withDesign } from "storybook-addon-designs";
 import { Button, ButtonProps } from "./Button";
 
 export default {
-	title: "Example/Button",
+	title: "Components/Button",
 	component: Button,
 	decorators: [withDesign],
 	argTypes: {
