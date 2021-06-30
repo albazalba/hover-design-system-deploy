@@ -1,6 +1,13 @@
 import styled from '@emotion/styled';
 import {motion} from 'framer-motion';
 import React, {useState} from 'react';
+
+export interface ToolTipProps {
+  children?: any;
+  direction?: string;
+  content?: string;
+  isOpen?: boolean | any;
+}
 const Tooltip = (props: any) => {
   let timeout: any;
   const [active, setActive] = useState(false);
@@ -13,6 +20,7 @@ const Tooltip = (props: any) => {
     clearInterval(timeout);
     setActive(false);
   };
+
   return (
     <>
       {!props.isOpen ? (

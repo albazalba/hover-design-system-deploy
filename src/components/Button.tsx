@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { THEME } from "../theme";
 import { CONSTANTS } from "../constants";
+import {rgba} from "./Helper";
 
 export interface ACCENT {
 	primary: "primary";
@@ -15,9 +16,7 @@ export interface ACCENT {
 // instead of VARIANT why cant we use SHAPE
 
 export interface VARIANT {
-	solid: "solid";
 	light: "light";
-	dark: "dark";
 	hallow: "hallow";
 	ghost: "ghost";
 	// iconRight: "iconRight"; we cant put iconRight and iconLeft here. what if i need pill button right icon ?
@@ -44,7 +43,7 @@ interface ButtonProp {
 	isLoading?: boolean;
 	disabled?: boolean;
 	size?: SIZE[keyof SIZE];
-	rounded?: number | true;
+	rounded?: number | true |String;
 }
 
 const StyledButton = styled.button<ButtonProp>`
@@ -55,95 +54,98 @@ const StyledButton = styled.button<ButtonProp>`
 	border-radius: ${(props) => getBorderRadiusStyles(props.rounded)};
 	color: ${(props) => getFontColor(props.accent)};
 	background: ${(props) => getBgColor(props.accent)};
-	box-shadow: ${(props) => getBoxShadow(props.accent)};
 	&:hover {
+        box-shadow: inset 0 0 0 100em rgb(0 0 0 / 10%);
 		cursor: pointer;
-		box-shadow: none;
-	}
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px ${rgba(THEME.colors.primary , 0.5)} ;
+}
 	&:active {
-		box-shadow: ${(props) => getBoxShadow(props.accent)};
+		
 	}
 `;
 
 function getFontSize(size: any) {
-	var value = THEME.fonts.size.default;
-	if (size === CONSTANTS.SIZE.default) {
-		value = THEME.fonts.size.default;
-	} else if (size === CONSTANTS.SIZE.small) {
-		value = THEME.fonts.size.small;
-	} else if (size === CONSTANTS.SIZE.large) {
-		value = THEME.fonts.size.large;
-	} else if (size === CONSTANTS.SIZE.xtraLarge) {
-		value = THEME.fonts.size.xtraLarge;
+	console.log("size",size)
+	var value = THEME.font.fontSize.default;
+	if (size == THEME.font.fontSize.default) {
+		value = THEME.font.fontSize.default;
+	} else if (size == THEME.font.fontSize.sm) {
+		value = THEME.font.fontSize.sm;
+	} else if (size == THEME.font.fontSize.lg) {
+		value = THEME.font.fontSize.lg;
+	} else if (size == THEME.font.fontSize.xl) {
+		value = THEME.font.fontSize.xl;
 	}
 	return value;
 }
 
 function getPadding(size: any) {
-	var value = THEME.padding.button.default;
+	var value = THEME.spacing.default;
 	if (size === CONSTANTS.SIZE.default) {
-		value = THEME.padding.button.default;
+		value = THEME.spacing.default;
 	} else if (size === CONSTANTS.SIZE.small) {
-		value = THEME.padding.button.small;
+		value = THEME.spacing.sm;
 	} else if (size === CONSTANTS.SIZE.large) {
-		value = THEME.padding.button.large;
+		value = THEME.spacing.lg;
 	} else if (size === CONSTANTS.SIZE.xtraLarge) {
-		value = THEME.padding.button.xtraLarge;
+		value = THEME.spacing.xl;
 	}
 	return value;
 }
 
-function getBoxShadow(accent: any) {
-	var value = THEME.colors.buttonTextColor.primary;
-	if (accent === CONSTANTS.ACCENT.primary) {
-		value = THEME.depth.button.primary;
-	} else if (accent === CONSTANTS.ACCENT.secondary) {
-		value = THEME.depth.button.secondary;
-	} else if (accent === CONSTANTS.ACCENT.success) {
-		value = THEME.depth.button.success;
-	} else if (accent === CONSTANTS.ACCENT.error) {
-		value = THEME.depth.button.error;
-	}
-	return value;
-}
+// function getBoxShadow(accent: any) {
+// 	var value = THEME.colors.buttonColorPrimary;
+// 	if (accent === CONSTANTS.ACCENT.primary) {
+// 		value = THEME.depth.button.primary;
+// 	} else if (accent === CONSTANTS.ACCENT.secondary) {
+// 		value = THEME.depth.button.secondary;
+// 	} else if (accent === CONSTANTS.ACCENT.success) {
+// 		value = THEME.depth.button.success;
+// 	} else if (accent === CONSTANTS.ACCENT.error) {
+// 		value = THEME.depth.button.error;
+// 	}
+// 	return value;
+// }
 
 function getFontColor(accent: any) {
-	var value = THEME.colors.buttonTextColor.primary;
+	var value = THEME.colors.buttonColorPrimary;
 	if (accent === CONSTANTS.ACCENT.primary) {
-		value = THEME.colors.buttonTextColor.primary;
+		value = THEME.colors.buttonColorPrimary;
 	} else if (accent === CONSTANTS.ACCENT.secondary) {
-		value = THEME.colors.buttonTextColor.secondary;
+		value = THEME.colors.buttonColorSecondary;
 	} else if (accent === CONSTANTS.ACCENT.success) {
-		value = THEME.colors.buttonTextColor.white;
+		value = THEME.colors.buttonColorPrimary;
 	} else if (accent === CONSTANTS.ACCENT.error) {
-		value = THEME.colors.buttonTextColor.white;
+		value = THEME.colors.buttonColorPrimary;
 	}
 	return value;
 }
 
 function getBgColor(accent: any) {
-	var value = THEME.colors.buttonBgColor.primary;
+	var value = THEME.colors.primary;
 	if (accent === CONSTANTS.ACCENT.primary) {
-		value = THEME.colors.buttonBgColor.primary;
+		value = THEME.colors.primary;
 	} else if (accent === CONSTANTS.ACCENT.secondary) {
-		value = THEME.colors.buttonBgColor.secondary;
+		value = THEME.colors.secondary;
 	} else if (accent === CONSTANTS.ACCENT.success) {
-		value = THEME.colors.buttonBgColor.success;
+		value = THEME.colors.success;
 	} else if (accent === CONSTANTS.ACCENT.error) {
-		value = THEME.colors.buttonBgColor.error;
+		value = THEME.colors.error;
 	}
 	return value;
 }
 
 function getBorderRadiusStyles(rounded: any) {
-	var value: boolean | string | number = THEME.borders.buttonBorderRadius;
-	if (rounded === true) {
-		value = THEME.borders.buttonBorderRadius;
+	var value: boolean | string | number = THEME.borderRadius.default;
+	if (rounded === true){
+		value = THEME.borderRadius.default;
 	} else if (typeof rounded === "number") {
 		value = rounded;
 	}
 
-	return value + "px";
+	return value;
 }
 
 const Button = (props: ButtonProp) => {
@@ -153,7 +155,8 @@ const Button = (props: ButtonProp) => {
 			variant={variant}
 			accent={accent}
 			rounded={rounded}
-			size={size}>
+			size={size}
+			 {...props} >
 			{label}
 		</StyledButton>
 	);

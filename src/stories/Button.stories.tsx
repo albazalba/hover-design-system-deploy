@@ -5,12 +5,21 @@ import {withDesign} from 'storybook-addon-designs';
 import {Button, ButtonProps} from './Button';
 
 export default {
+<<<<<<< HEAD
   title: 'Example/Button',
   component: Button,
   decorators: [withDesign],
   argTypes: {
     backgroundColor: {control: 'color'},
   },
+=======
+	title: "Components/Button",
+	component: Button,
+	decorators: [withDesign],
+	argTypes: {
+		backgroundColor: { control: "color" }
+	}
+>>>>>>> f2ae8f4b273b651effb548e4415e154a9573451d
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
