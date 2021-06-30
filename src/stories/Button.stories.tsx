@@ -1,61 +1,61 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react";
-import { withDesign } from "storybook-addon-designs";
+import React from 'react';
+import {Story, Meta} from '@storybook/react';
+import {withDesign} from 'storybook-addon-designs';
 
-import { Button, ButtonProps } from "./Button";
+import {Button, ButtonProps} from './Button';
 
 export default {
-	title: "Example/Button",
-	component: Button,
-	decorators: [withDesign],
-	argTypes: {
-		backgroundColor: { control: "color" }
-	}
+  title: 'Example/Button',
+  component: Button,
+  decorators: [withDesign],
+  argTypes: {
+    backgroundColor: {control: 'color'},
+  },
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-	accent: "primary",
-	label: "Button"
+  accent: 'primary',
+  label: 'Button',
 };
 
 Primary.parameters = {
-	design: {
-		type: "figma",
-		url:
-			"https://www.figma.com/file/cOnIxpJzyQUUrcN8flCymY/Untitled?node-id=1%3A2",
-		allowFullscreen: true
-	}
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/cOnIxpJzyQUUrcN8flCymY/Untitled?node-id=1%3A2',
+    allowFullscreen: true,
+  },
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-	accent: "secondary",
-	label: "Button"
+  accent: 'secondary',
+  label: 'Button',
 };
 
 export const Success = Template.bind({});
 Success.args = {
-	accent: "success",
-	label: "Button"
+  accent: 'success',
+  label: 'Button',
 };
 
 export const Large = Template.bind({});
 Large.args = {
-	size: "large",
-	label: "Button"
+  size: 'large',
+  label: 'Button',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-	size: "small",
-	label: "Button"
+  size: 'small',
+  label: 'Button',
 };
 
 export const XLarge = Template.bind({});
 XLarge.args = {
-	size: "xtraLarge",
-	label: "Button"
+  size: 'xtraLarge',
+  label: 'Button',
 };
