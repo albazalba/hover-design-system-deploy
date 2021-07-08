@@ -41,7 +41,6 @@ const Tooltip = (props: any) => {
           onMouseLeave={hideTip}
           page={props.page}
         >
-          {/* Wrapping */}
           {props.children}
           {active && (
             <motion.div
@@ -52,7 +51,6 @@ const Tooltip = (props: any) => {
               animate={{y: -12, opacity: 1}}
               className={`Tooltip-Tip ${props.direction || 'top'}`}
             >
-              {/* Content */}
               {props.content}
             </motion.div>
           )}
@@ -92,7 +90,7 @@ const TooltipWrapper = styled.div<{page: any}>`
   .Tooltip-Tip {
     position: absolute;
     border-radius: 4px;
-    left: 50%;
+    /* left: 50%; */
     transform: translateX(-50%);
     padding: 6px;
     color: white;
@@ -119,42 +117,41 @@ const TooltipWrapper = styled.div<{page: any}>`
     top: calc(30px * -1);
     left: 0;
   }
-  /* CSS border triangles */
+
   .Tooltip-Tip.top::before {
     top: 100%;
     border-top-color: black;
   }
-  /* Absolute positioning */
+
   .Tooltip-Tip.right {
-    left: ${(props) =>
-      props.page === 'sidemenu' ? 'calc(100% + 30px)' : 'calc(100% + 10px)'};
-    top: 50%;
+    left: calc(25% + 0px);
     transform: translateX(0) translateY(-50%);
+    top: 50%;
   }
-  /* CSS border triangles */
+
   .Tooltip-Tip.right::before {
     left: calc(6px * -1);
     top: 50%;
     transform: translateX(0) translateY(-50%);
     border-right-color: black;
   }
-  /* Absolute positioning */
+
   .Tooltip-Tip.bottom {
-    bottom: calc(30px * -1);
+    /* bottom: calc(30px * -1); */
   }
-  /* CSS border triangles */
+
   .Tooltip-Tip.bottom::before {
     bottom: 100%;
     border-bottom-color: black;
   }
-  /* Absolute positioning */
+
   .Tooltip-Tip.left {
     left: auto;
     right: calc(100% + 10px);
     top: 50%;
     transform: translateX(0) translateY(-50%);
   }
-  /* CSS border triangles */
+
   .Tooltip-Tip.left::before {
     left: auto;
     right: calc(6px * -2);

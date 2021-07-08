@@ -22,7 +22,7 @@ export default {
 const Template: Story<ToolTipProps> = (args) => {
   return (
     <Tooltip {...args}>
-      <h1>hello</h1>
+      <h1>ToolTip</h1>
     </Tooltip>
   );
 };
