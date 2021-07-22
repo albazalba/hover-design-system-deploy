@@ -9,8 +9,8 @@ export default {
 	component: DropDownComponent,
 	decorators: [withDesign],
 	argTypes: {
-		backgroundColor: { control: "color" }
-	}
+		backgroundColor: { control: "color" },
+	},
 } as Meta;
 
 const DropDownTemplate: Story<DropDownProp> = (args) => (
@@ -20,6 +20,15 @@ const DropDownTemplate: Story<DropDownProp> = (args) => (
 export const DropDown = DropDownTemplate.bind({});
 
 DropDown.args = {
-	content: <div>This is drop down content</div>,
-	children: <h4>Click Here</h4>
+	content: (
+		<div>
+			This is drop down content. This is drop down content. This is drop down
+			content. This is drop down content. This is drop down content. This is
+			drop down content. This is drop down content. This is drop down content.
+			This is drop down content. This is drop down content. This is drop down
+			content. This is drop down content. This is drop down content. This is
+			drop down content.
+		</div>
+	),
+	children: <h4>Click Here</h4>,
 };
