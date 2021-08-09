@@ -1,8 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { Children, ReactNode } from "react";
 import styled from "@emotion/styled";
 import { css } from '@emotion/react'
-import { THEME } from "./theme";
-import { CONSTANTS } from "./constants";
+import { THEME } from "../../theme";
+import { CONSTANTS } from "../../constants";
+// import {MdDelete} from 'react-icons/md'
 // import {rgba} from "../components/Helper";
 
 export interface ACCENT {
@@ -12,7 +13,6 @@ export interface ACCENT {
 	info: "info";
 	success: "success";
 	warning: "warning";
-	disabled: "disabled";
 }
 
 // instead of VARIANT why cant we use SHAPE
@@ -23,6 +23,7 @@ export interface VARIANT {
 	dark: "dark";
 	hallow: "hallow";
 	ghost: "ghost";
+	block:"block";
 	// iconRight: "iconRight"; we cant put iconRight and iconLeft here. what if i need pill button right icon ?
 	// iconLeft: "iconLeft"; ""
 	// iconOnly: "iconOnly"; ""
@@ -44,24 +45,32 @@ export interface ButtonProps {
 	variant?: VARIANT[keyof VARIANT];
 	startIcon?: React.ReactNode;
 	endIcon?: React.ReactNode;
+	icon?: React.ReactNode;
 	isLoading?: boolean;
 	disabled?: boolean;
 	size?: SIZE[keyof SIZE];
 	rounded?: number | true;
+	fullWidth?: boolean | undefined;
+	Children?: any;
+	style?:any;
+	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
 }
 
 const StyledButton = styled.button<ButtonProps>`
+	
 	/* min-width: 100px; */
 	display: flex;
+	height: ${(props) => props.icon ? "40px" : "auto"};
+	width: ${(props) => getWidth(props.fullWidth, props.icon)};
 	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
 	transition: all 500ms ease; 
 	font-size: ${(props) => getFontSize(props.size)};
 	font-weight: 600;
-	padding: ${(props) =>getPadding(props.size)};
+	padding: ${(props) =>getPadding(props.size, props.icon)};
 	border: ${(props) => props.variant === "hallow" ? "1px solid black" : "none" };
-	border-radius: ${(props) => getBorderRadiusStyles(props.rounded)};
+	border-radius: ${(props) => getBorderRadiusStyles(props.rounded, props.icon)};
 	outline: none;
 	color: ${(props) => getFontColor(props.accent)};
 	background: ${(props) => getBgColor(props.accent)};
@@ -88,7 +97,13 @@ const StyledButton = styled.button<ButtonProps>`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-left: ${(props) => !props.endIcon ? "auto" : "5px"} ;
+		margin-left: ${(props) => { console.log("endIcon",props.endIcon); return !props.endIcon ? "auto" : "5px"}} ;
+		font-size: 18px;
+	}
+	.icon{
+		display: flex;
+		align-items: center;
+		border-radius: 50%;
 		font-size: 18px;
 	}
 	${(props) => getVariant(props.variant, props.color, props.accent)};
@@ -208,8 +223,21 @@ function getVariant(variant: string | undefined, color: string | undefined, acce
 								? CONSTANTS.successHover
 								: CONSTANTS.primaryHover};;
 							}	
-			`: null
+			` 
+			: null
 	);
+}
+
+function getWidth( fullWidth: any, icon: any) {
+	var value = "auto";
+	if (fullWidth === true){
+		value = "100%";
+	} else if (fullWidth === false) {
+		value ="auto"
+	} else if (icon) {
+		value = "40px"
+	}
+	return value ;
 }
 
 function getFontSize(size: any) {
@@ -227,7 +255,7 @@ function getFontSize(size: any) {
 	return value;
 }
 
-function getPadding(size: any) {
+function getPadding(size: any, icon: any) {
 	var value = THEME.padding.default;
 	if (size === CONSTANTS.SIZE.default) {
 		value = THEME.padding.default;
@@ -237,6 +265,8 @@ function getPadding(size: any) {
 		value = THEME.padding.lg;
 	} else if (size === CONSTANTS.SIZE.xtraLarge) {
 		value = THEME.padding.xl;
+	} else if (icon) {
+		value = "auto"
 	}
 	return value;
 }
@@ -289,12 +319,14 @@ function getBgColor(accent: any) {
 	return value;
 }
 
-function getBorderRadiusStyles(rounded: any) {
+function getBorderRadiusStyles(rounded: any, icon: any) {
 	var value: boolean | string | number = THEME.borderRadius.default;
 	if (rounded === true){
 		value = "18px";
 	} else if (typeof rounded === "number") {
-		value = rounded;
+		value = rounded+"px";
+	} else if (icon) {
+		value= "50%"
 	}
 
 	return value;
@@ -303,7 +335,7 @@ function getBorderRadiusStyles(rounded: any) {
 
 
 export const Button = (props: ButtonProps) => {
-	const { label, variant, accent, size, rounded, startIcon, endIcon, disabled } = props;
+	const { label, variant, accent, size, rounded, startIcon, endIcon, icon, disabled, fullWidth, style, onClick } = props;
 	return (
 		<StyledButton
 			variant={variant}
@@ -312,9 +344,20 @@ export const Button = (props: ButtonProps) => {
 			rounded={rounded}
 			size={size}
 			startIcon={startIcon}
-			endIcon={endIcon}>
-			<span className="start-icon">{startIcon}</span>{label}<span className="end-icon">{endIcon}</span>
+			endIcon={endIcon}
+			icon ={icon}
+			fullWidth={fullWidth}
+			onClick={onClick}
+			style={style}>
+			<span className="start-icon">{startIcon}</span>{label}<span className="icon">{icon}</span><span className="end-icon">{endIcon}</span>
 		</StyledButton>
 	);
 };
+
+
+
+
+
+
+
 
