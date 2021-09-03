@@ -21,4 +21,3 @@ import React from 'react'
         const color = hexToRgb(hex)
         return `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`
       }
-
