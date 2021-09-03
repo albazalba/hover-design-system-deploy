@@ -13,7 +13,7 @@ export default {
 	}
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) =>  <Button {...args} />; 
+const Template: Story<ButtonProps> = (args) => <Button {...args} />; 
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -71,3 +71,9 @@ EndIcon.args ={
   endIcon: <MdDelete />,
   label: 'Button'
 };
+
+export const Icon = Template.bind({});
+Icon.args = {
+  icon: <MdDelete />,
+  variant: "ghost"
+}

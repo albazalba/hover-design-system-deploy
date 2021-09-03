@@ -141,6 +141,12 @@ export const THEME = {
 		36: "36px",
 		40: "40px",
 	  },
+	  padding: {
+		  default:"10px 18px",
+		  sm:"6px 12px",
+		  lg: "10px 20px",
+		  xl: "16px 24px"
+	  },
 	  position: {
 		  static: "static",
 		  relative: "relative",
