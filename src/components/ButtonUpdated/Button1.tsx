@@ -60,9 +60,10 @@ const StyledButton = styled.button<ButtonProps>`
 	
 	/* min-width: 100px; */
 	display: flex;
+	position: relative;
 	height: ${(props) => props.icon ? "40px" : "auto"};
 	width: ${(props) => getWidth(props.fullWidth, props.icon)};
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	box-sizing: border-box;
 	transition: all 500ms ease; 
@@ -74,10 +75,10 @@ const StyledButton = styled.button<ButtonProps>`
 	outline: none;
 	color: ${(props) => getFontColor(props.accent)};
 	background: ${(props) => getBgColor(props.accent)};
-	opacity: ${(props) => props.disabled === true ? "0.3" : "1"};
+	opacity: ${(props) => getOpacity(props.disabled, props.isLoading)};
 	&:hover {
 		box-shadow: inset 0 0 0 100em rgb(0 0 0 / 10%);
-		cursor: ${(props) => props.disabled === true ? "not-allowed" : "pointer"};
+		cursor: ${(props) => getCursor(props.disabled, props.isLoading)};
 	}
 	&:active {
 	}
@@ -91,14 +92,14 @@ const StyledButton = styled.button<ButtonProps>`
 		justify-content: center;
 		align-items: center;
 		margin-right: ${(props) => !props.startIcon ? "auto" : "5px"} ;
-		font-size: 18px;
+		/* font-size: 18px; */
 	}
 	.end-icon{
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-left: ${(props) => { console.log("endIcon",props.endIcon); return !props.endIcon ? "auto" : "5px"}} ;
-		font-size: 18px;
+		padding-left: ${(props) =>  !props.endIcon ? "auto" : "5px"} ;
+		/* font-size: 18px; */
 	}
 	.icon{
 		display: flex;
@@ -106,8 +107,50 @@ const StyledButton = styled.button<ButtonProps>`
 		border-radius: 50%;
 		font-size: 18px;
 	}
-	${(props) => getVariant(props.variant, props.color, props.accent)};
+	.is-loading{
+	/* position: absolute; */
+	margin-right:10px ;
+	width: 12px;
+	height: 12px;
+	/* margin: auto; */
+	border: 2px solid transparent;
+	border-top-color: #ffffff;
+	border-radius: 50%;
+	animation: button-loading-spinner 1s ease infinite;
+	}
+
+	@keyframes button-loading-spinner {
+		from {
+			transform: rotate(0turn);
+		}
+
+		to {
+			transform: rotate(1turn);
+		}
+	}
+	
+${(props) => getVariant(props.variant, props.color, props.accent)};
 	`
+
+function getOpacity(disabled:any, isLoading:any){
+	var value = "1";
+	if(isLoading === true){
+		value= "0.5";
+	} else if(disabled === true){
+		value="0.5";
+	}
+	return value
+}
+
+function getCursor(disabled:any, isLoading:any){
+	var value="pointer";
+	if (disabled){
+		value="not-allowed"
+	} else if (isLoading) {
+		value="not-allowed"
+	}
+	return value;
+}
 
 function getVariant(variant: string | undefined, color: string | undefined, accent: string | undefined){
 	return (
@@ -335,7 +378,7 @@ function getBorderRadiusStyles(rounded: any, icon: any) {
 
 
 export const Button = (props: ButtonProps) => {
-	const { label, variant, accent, size, rounded, startIcon, endIcon, icon, disabled, fullWidth, style, onClick } = props;
+	const { label, variant, accent, size, rounded, startIcon, endIcon, icon, disabled, fullWidth, style, onClick, isLoading } = props;
 	return (
 		<StyledButton
 			variant={variant}
@@ -348,8 +391,13 @@ export const Button = (props: ButtonProps) => {
 			icon ={icon}
 			fullWidth={fullWidth}
 			onClick={onClick}
+			isLoading={isLoading}
 			style={style}>
-			<span className="start-icon">{startIcon}</span>{label}<span className="icon">{icon}</span><span className="end-icon">{endIcon}</span>
+			{isLoading && <span className="is-loading"></span>}	
+			{startIcon && <span className="start-icon">{startIcon}</span>}
+			{label}
+			{icon && <span className="icon">{icon}</span>}
+			{endIcon && <span className="end-icon">{endIcon}</span>}
 		</StyledButton>
 	);
 };

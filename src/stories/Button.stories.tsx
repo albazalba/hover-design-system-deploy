@@ -77,3 +77,10 @@ Icon.args = {
   icon: <MdDelete />,
   variant: "ghost"
 }
+
+export const Loading = Template.bind({});
+Loading.args = {
+  label: "Loading",
+  variant: "solid",
+  isLoading:true
+}
