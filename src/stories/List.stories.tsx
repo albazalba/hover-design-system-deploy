@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Children } from 'react';
 import {Story, Meta} from '@storybook/react';
 import {withDesign} from 'storybook-addon-designs';
-
-import {List as ListComponent, ListItem, ListProps, List} from './List';
+import styled from "@emotion/styled"
+import {List as ListComponent, ListItem, ListProps,ListItemIcon, List, ListItemText} from '../components/List/List';
 import {FiCheck} from 'react-icons/fi';
+import {AiFillHome, AiFillSetting} from 'react-icons/ai'
+import {MdAccountCircle} from 'react-icons/md'
+import {BiMessageAltDetail} from 'react-icons/bi'
 import reportWebVitals from '../reportWebVitals';
+import { homedir } from 'os';
 
 export default {
   title: 'Components/List',
@@ -17,44 +21,83 @@ export default {
 
 const Template: Story<ListProps> = (args) => {
   return (
-    <ListComponent {...args}>
-      <ListItem>Ankith</ListItem>
-      <ListItem>Akhil</ListItem>
-      <ListItem>Rahul</ListItem>
-      <ListItem>Veen</ListItem>
-      <ListItem>Suri</ListItem>
-      <ListItem>Supritha</ListItem>
-    </ListComponent>
+    <Wrapper>
+      <ListComponent {...args}>
+      </ListComponent>
+    </Wrapper>
   );
 };
 
-export const PrimaryList = Template.bind({});
-PrimaryList.args = {
-  accent: 'primary',
-  type: 'bullet',
-  size: 'large',
-};
-
-export const SecondaryList = Template.bind({});
-SecondaryList.args = {
-  accent: 'secondary',
-  type: 'roman',
-  size: 'large',
-};
-
-export const ImageList = Template.bind({});
-ImageList.args = {
-  accent: 'image',
-  size: 'default',
-  type: <FiCheck />,
-};
+const Wrapper = styled.div`
+  width:100%;
+  /* border:1px solid gray */
+`
 
 export const VerticalList = Template.bind({});
 VerticalList.args = {
-  accent: 'primary',
-  size: 'large',
-  alignment: 'horizontal',
+  children: (
+      <>
+        <ListItem hoverEffect>
+          <ListItemIcon>
+            <AiFillHome/>
+          </ListItemIcon>
+          <ListItemText style={{color:"blue"}} primary="Home" secondary="secondary text" />
+          
+        </ListItem>
+        <ListItem hoverEffect disabled>
+          <ListItemIcon>
+            <MdAccountCircle />
+          </ListItemIcon>
+          <ListItemText primary="Account" secondary="secondary text" />
+        </ListItem> 
+        <ListItem hoverEffect> 
+          <ListItemIcon>
+            <AiFillSetting />
+          </ListItemIcon>
+          <ListItemText primary="Settings" secondary="secondary text" />
+        </ListItem>
+        <ListItem hoverEffect>
+          <ListItemIcon>
+            <BiMessageAltDetail />
+          </ListItemIcon>
+          <ListItemText primary="Support" secondary="secondary text" />
+        </ListItem>
+      </>
+  )
 };
 
-export const defaultStyling = Template.bind({});
-defaultStyling.args = {};
+
+export const HorizontalList = Template.bind({});
+HorizontalList.args = {
+  size: 'large',
+  alignment: 'horizontal',
+  children: (
+    <>
+      <ListItem hoverEffect>
+        <ListItemIcon>
+          <AiFillHome/>
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      </ListItem>
+      <ListItem hoverEffect>
+        <ListItemIcon>
+          <MdAccountCircle />
+        </ListItemIcon>
+        <ListItemText primary="Account" />
+      </ListItem> 
+      <ListItem hoverEffect> 
+        <ListItemIcon>
+          <AiFillSetting />
+        </ListItemIcon>
+        <ListItemText primary="Settings" />
+      </ListItem>
+      <ListItem hoverEffect>
+        <ListItemIcon>
+          <BiMessageAltDetail />
+        </ListItemIcon>
+        <ListItemText primary="Support" />
+      </ListItem>
+    </>
+)
+};
+
