@@ -12,7 +12,7 @@ import {
     CardHeader
 } from "../components/Card/Card";
 
-import { Button } from "../components/ButtonUpdated/Button1";
+import { Button } from "../components/Button/Button";
 export default {
 	title: "Components/Card",
 	component: CardComponent,

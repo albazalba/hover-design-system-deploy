@@ -40,9 +40,8 @@ VerticalList.args = {
         <ListItem hoverEffect>
           <ListItemIcon>
             <AiFillHome/>
-          </ListItemIcon>
-          <ListItemText style={{color:"blue"}} primary="Home" secondary="secondary text" />
-          
+            </ListItemIcon>
+          <ListItemText style={{color:"blue"}} primary="Home" secondary="secondary text" />     
         </ListItem>
         <ListItem hoverEffect disabled>
           <ListItemIcon>
