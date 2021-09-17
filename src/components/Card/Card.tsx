@@ -23,7 +23,6 @@ export interface CardHeaderProps {
 
 export const Card: React.FC<CardProps> = (props) => {
 	const { children, isElavated } = props;
-
 	return (
 		<CardContainer isElavated={isElavated}>
 			{children}
@@ -31,16 +30,35 @@ export const Card: React.FC<CardProps> = (props) => {
 	);
 };
 
+export const CardMedia = (props: CardMediaProps) => {
+     const { image, title } = props;
+     return <CardMedia.Container><img src={image} title={title} /></CardMedia.Container> 
+};
+
+export const CardHeader = (props: CardHeaderProps) => {
+    const { title, subheader, style } = props;
+    return (
+    <CardHeader.Container>
+        <span className="title">{title}</span><span className="subheader">{subheader}</span>
+    </CardHeader.Container>
+    )
+};
+
+export const CardBody = (props: any) => {
+	const { children } = props;
+	return <CardBody.Container>{children}</CardBody.Container>;
+};
+
+export const CardAction = (props: any) => {
+	const { children } = props;
+	return <CardAction.Container>{children}</CardAction.Container>;
+};
+
 const CardContainer = styled.div<CardProps>`
 	border: 1px solid #e2e2e2;
     box-shadow: ${(props) => props.isElavated === true ? "0 4px 8px 0 rgba(0,0,0,0.2)" : "none" };
 	position: relative;
 `;
-
-export const CardHeader = (props: CardHeaderProps) => {
-    const { title, subheader, style } = props;
-    return <CardHeader.Container><span className="title">{title}</span><span className="subheader">{subheader}</span></CardHeader.Container>
-};
 
 CardHeader.Container = styled.div`
     display: flex;
@@ -57,10 +75,6 @@ CardHeader.Container = styled.div`
     }
 `
 
-export const CardMedia = (props: CardMediaProps) => {
-     const { image, title } = props;
-     return <CardMedia.Container><img src={image} title={title} /></CardMedia.Container> 
-};
 
 CardMedia.Container = styled.div`
     img{
@@ -70,21 +84,11 @@ CardMedia.Container = styled.div`
     }
 `;
 
-export const CardBody = (props: any) => {
-	const { children } = props;
-	return <CardBody.Container>{children}</CardBody.Container>;
-};
-
 CardBody.Container = styled.div`
 	line-height: 24px;
 	font-size: 16px;
 	margin: 0 16px 16px 16px;
 `;
-
-export const CardAction = (props: any) => {
-	const { children } = props;
-	return <CardAction.Container>{children}</CardAction.Container>;
-};
 
 CardAction.Container = styled.div`
 	margin: 16px;

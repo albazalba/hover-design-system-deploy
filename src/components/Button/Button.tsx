@@ -56,8 +56,32 @@ export interface ButtonProps {
 	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => any;
 }
 
+export const Button = (props: ButtonProps) => {
+	const { label, variant, accent, size, rounded, startIcon, endIcon, icon, disabled, fullWidth, style, onClick, isLoading } = props;
+	return (
+		<StyledButton
+			variant={variant}
+			accent={accent}
+			disabled={disabled}
+			rounded={rounded}
+			size={size}
+			startIcon={startIcon}
+			endIcon={endIcon}
+			icon ={icon}
+			fullWidth={fullWidth}
+			onClick={onClick}
+			isLoading={isLoading}
+			style={style}>
+			{isLoading && <span className="is-loading"></span>}	
+			{startIcon && <span className="start-icon">{startIcon}</span>}
+			{label}
+			{icon && <span className="icon">{icon}</span>}
+			{endIcon && <span className="end-icon">{endIcon}</span>}
+		</StyledButton>
+	);
+};
+
 const StyledButton = styled.button<ButtonProps>`
-	
 	/* min-width: 100px; */
 	display: flex;
 	position: relative;
@@ -377,30 +401,6 @@ function getBorderRadiusStyles(rounded: any, icon: any) {
 
 
 
-export const Button = (props: ButtonProps) => {
-	const { label, variant, accent, size, rounded, startIcon, endIcon, icon, disabled, fullWidth, style, onClick, isLoading } = props;
-	return (
-		<StyledButton
-			variant={variant}
-			accent={accent}
-			disabled={disabled}
-			rounded={rounded}
-			size={size}
-			startIcon={startIcon}
-			endIcon={endIcon}
-			icon ={icon}
-			fullWidth={fullWidth}
-			onClick={onClick}
-			isLoading={isLoading}
-			style={style}>
-			{isLoading && <span className="is-loading"></span>}	
-			{startIcon && <span className="start-icon">{startIcon}</span>}
-			{label}
-			{icon && <span className="icon">{icon}</span>}
-			{endIcon && <span className="end-icon">{endIcon}</span>}
-		</StyledButton>
-	);
-};
 
 
 
