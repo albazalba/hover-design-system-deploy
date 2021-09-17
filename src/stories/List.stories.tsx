@@ -35,34 +35,33 @@ const Wrapper = styled.div`
 
 export const VerticalList = Template.bind({});
 VerticalList.args = {
-  children: (
-      <>
-        <ListItem hoverEffect>
-          <ListItemIcon>
-            <AiFillHome/>
-            </ListItemIcon>
-          <ListItemText style={{color:"blue"}} primary="Home" secondary="secondary text" />     
-        </ListItem>
-        <ListItem hoverEffect disabled>
-          <ListItemIcon>
-            <MdAccountCircle />
-          </ListItemIcon>
-          <ListItemText primary="Account" secondary="secondary text" />
-        </ListItem> 
-        <ListItem hoverEffect> 
-          <ListItemIcon>
-            <AiFillSetting />
-          </ListItemIcon>
-          <ListItemText primary="Settings" secondary="secondary text" />
-        </ListItem>
-        <ListItem hoverEffect>
-          <ListItemIcon>
-            <BiMessageAltDetail />
-          </ListItemIcon>
-          <ListItemText primary="Support" secondary="secondary text" />
-        </ListItem>
-      </>
-  )
+  lists: [
+    {
+      primaryText:" Home",
+      secondaryText: "secondary text",
+      icon: <AiFillHome/>,
+      hoverEffect: true
+    },
+    {
+      primaryText:"Account",
+      secondaryText: "secondary text",
+      icon: <MdAccountCircle />,
+      hoverEffect: true,
+      disabled: true
+    },
+    {
+      primaryText:"Settings",
+      secondaryText: "secondary text",
+      icon: <AiFillSetting />,
+      hoverEffect: true
+    },
+    {
+      primaryText:"Support",
+      secondaryText: "secondary text",
+      icon: <BiMessageAltDetail />,
+      hoverEffect: true
+    }
+  ],
 };
 
 
@@ -70,33 +69,28 @@ export const HorizontalList = Template.bind({});
 HorizontalList.args = {
   size: 'large',
   alignment: 'horizontal',
-  children: (
-    <>
-      <ListItem hoverEffect>
-        <ListItemIcon>
-          <AiFillHome/>
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      </ListItem>
-      <ListItem hoverEffect>
-        <ListItemIcon>
-          <MdAccountCircle />
-        </ListItemIcon>
-        <ListItemText primary="Account" />
-      </ListItem> 
-      <ListItem hoverEffect> 
-        <ListItemIcon>
-          <AiFillSetting />
-        </ListItemIcon>
-        <ListItemText primary="Settings" />
-      </ListItem>
-      <ListItem hoverEffect>
-        <ListItemIcon>
-          <BiMessageAltDetail />
-        </ListItemIcon>
-        <ListItemText primary="Support" />
-      </ListItem>
-    </>
-)
+  lists: [
+    {
+      primaryText:" Home",
+      icon: <AiFillHome/>,
+      hoverEffect: true
+    },
+    {
+      primaryText:"Account",
+      icon: <MdAccountCircle />,
+      hoverEffect: true,
+      disabled: true
+    },
+    {
+      primaryText:"Settings",
+      icon: <AiFillSetting />,
+      hoverEffect: true
+    },
+    {
+      primaryText:"Support",
+      icon: <BiMessageAltDetail />,
+      hoverEffect: true
+    }
+  ],
 };
 
