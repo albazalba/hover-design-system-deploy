@@ -1,17 +1,17 @@
 import React from 'react';
 
-import Tooltip from './Tooltip';
+import Tooltip from '../../components/Tooltip/Tooltip';
 import {Story, Meta} from '@storybook/react';
 import {withDesign} from 'storybook-addon-designs';
 import styled from '@emotion/styled';
-import {ToolTipProps} from './Tooltip';
+import {ToolTipProps} from '../../components/Tooltip/Tooltip';
 
 const Container = styled.div`
   max-width: 400px;
   height: 500px;
 `;
 export default {
-  title: 'Example/Tooltip',
+  title: 'In progress/Tooltip',
   component: Tooltip,
   decorators: [withDesign],
   argTypes: {

@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { css } from '@emotion/react'
 import { THEME } from "../../theme";
 import { CONSTANTS } from "../../constants";
+import { rgba } from "../Helper";
 // import {MdDelete} from 'react-icons/md'
 // import {rgba} from "../components/Helper";
 
@@ -105,6 +106,7 @@ const StyledButton = styled.button<ButtonProps>`
 		cursor: ${(props) => getCursor(props.disabled, props.isLoading)};
 	}
 	&:active {
+		box-shadow: ${(props) => `0 0 0 3px ${rgba(getBgColor(props.accent) , 0.5)}`};
 	}
 	img {
 		height:15px;

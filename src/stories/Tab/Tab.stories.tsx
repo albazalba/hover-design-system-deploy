@@ -1,11 +1,11 @@
 import React from 'react';
 import {Story, Meta} from '@storybook/react';
 import {withDesign} from 'storybook-addon-designs';
-import {TabProps} from './Tab';
-import TabBarWithRender from './Tab';
+import {TabProps} from '../../components/Tabs/Tab';
+import TabBarWithRender from '../../components/Tabs/Tab';
 
 export default {
-  title: 'Components/Tab',
+  title: 'In progress/Tab',
   component: TabBarWithRender,
   decorators: [withDesign],
   argTypes: {
