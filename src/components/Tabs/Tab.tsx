@@ -24,6 +24,7 @@ export default function TabBarWithRender({tabs}: any) {
           </TabButton>
         ))}
       </TabContainer>
+      {/* {tabs[activeTab].render()} */}
       {tabs[activeTab].content}
     </TabComponent>
   );
