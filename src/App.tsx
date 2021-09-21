@@ -1,14 +1,29 @@
-import './App.css';
-import Button from './components/Button';
-import Tooltip from './components/Tooltip';
-import {DropDown} from './components/DropDown/MenuButton';
-import {FiMoreVertical} from 'react-icons/fi'
+import "./App.css";
+import { Dropdown } from "./stories/Dropdown";
 
 function App() {
-  return (
-    <div className="app">
-    </div>
-  );
+	let options = [
+		{ value: "frenchy", label: "Frenchy" },
+		{ value: "coco", label: "Coco" },
+		{ value: "kitkat", label: "Kit-Kat" },
+		{ value: "lei", label: "Lei" },
+		{ value: "ankith", label: "Ankith" },
+	];
+
+	const onChange = (value: string) => {
+		console.log(value);
+	};
+
+	return (
+		<div className="app">
+			<Dropdown
+				defaultValue="frenchy"
+				options={options}
+				size={"small"}
+				onChange={onChange}
+			/>
+		</div>
+	);
 }
 
 export default App;
