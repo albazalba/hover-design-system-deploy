@@ -1,32 +1,50 @@
-import React, {useState} from 'react';
-import styled from '@emotion/styled';
+import React, { useState } from "react";
+import styled from "@emotion/styled";
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs";
+import "@reach/tabs/styles.css";
 
 export interface TabProps {
   title?: string;
   active?: boolean;
-  render?: any;
+  // render?: any;
   tabs?: any;
 }
-export default function TabBarWithRender({tabs}: any) {
-  const [activeTab, setActiveTab] = useState(0);
+// export default function DataTabs(({ tabs }: any) {
+//   const [activeTab, setActiveTab] = useState(0);
 
+//   return (
+//     <TabComponent>
+//       <TabContainer>
+//         {tabs.map((tab: any, index: any) => (
+//           <TabButton
+//             key={index}
+//             active={activeTab === index}
+//             onClick={() => setActiveTab(index)}
+//           >
+//             <Title active={activeTab === index}>{tab.title}</Title>
+//             <Indicator active={activeTab === index} />
+//           </TabButton>
+//         ))}
+//       </TabContainer>
+//       {/* {tabs[activeTab].render()} */}
+//       {tabs[activeTab].content}
+//     </TabComponent>
+//   );
+// }
+export default function DataTabs({ tabs }: any) {
   return (
-    <TabComponent>
-      <TabContainer>
+    <Tabs>
+      <TabList>
         {tabs.map((tab: any, index: any) => (
-          <TabButton
-            key={index}
-            active={activeTab === index}
-            onClick={() => setActiveTab(index)}
-          >
-            <Title active={activeTab === index}>{tab.title}</Title>
-            <Indicator active={activeTab === index} />
-          </TabButton>
+          <Tab key={index}>{tab.title}</Tab>
         ))}
-      </TabContainer>
-      {/* {tabs[activeTab].render()} */}
-      {tabs[activeTab].content}
-    </TabComponent>
+      </TabList>
+      <TabPanels>
+        {tabs.map((tab: any, index: any) => (
+          <TabPanel key={index}>{tab.content}</TabPanel>
+        ))}
+      </TabPanels>
+    </Tabs>
   );
 }
 
@@ -46,7 +64,7 @@ const TabButton = styled.button<TabProps>`
   align-items: center;
   position: relative;
   transition: 0.6s;
-  background: ${(props) => (props.active ? '#C4C4C4' : '#f2f2f2')};
+  background: ${(props) => (props.active ? "#C4C4C4" : "#f2f2f2")};
   &:focus {
     outline: none;
   }
@@ -59,7 +77,7 @@ const Title = styled.span<TabProps>`
   height: inherit;
   /* text-transform: uppercase; */
   font-size: 20px;
-  color: ${(props) => (props.active ? '#3e5b5b' : '#333')};
+  color: ${(props) => (props.active ? "#3e5b5b" : "#333")};
   transition: 0.6s;
 `;
 const Indicator = styled.span<TabProps>`
@@ -70,7 +88,7 @@ const Indicator = styled.span<TabProps>`
   height: 100%;
   /* border-bottom-width: 2px;
   border-bottom-style: solid; */
-  /* border-bottom-color: ${(props) => (props.active ? 'yellow' : 'red')}; */
+  /* border-bottom-color: ${(props) => (props.active ? "yellow" : "red")}; */
   transition: 0.6s;
 `;
 const TabComponent = styled.div`
