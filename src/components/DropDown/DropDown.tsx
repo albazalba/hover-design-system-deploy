@@ -14,7 +14,8 @@ import {CONSTANTS} from '../../constants'
 
 export interface DropDownProps {
     list?: any;
-    button?: any;
+    buttonName?: any;
+    buttonIcon?:any;
     children?: ReactNode;
     buttonStyle?: any;
     menuListStyle?: any;
@@ -25,7 +26,8 @@ export const DropDown = (props: DropDownProps) => {
     return (
         <Menu>
             <MenuButton style={props.buttonStyle}>
-            {props.button}
+            {props.buttonName}
+            {props.buttonIcon && <span style={{paddingLeft:"10px"}} aria-hidden>{props.buttonIcon}</span>}
             </MenuButton>
             <DropDownList style={props.menuListStyle}>
             {props.list.map((list: any) => (

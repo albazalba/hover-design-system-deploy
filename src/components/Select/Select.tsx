@@ -1,7 +1,7 @@
 import { Listbox, ListboxOption } from "@reach/listbox";
 import "@reach/listbox/styles.css";
-import { THEME } from "../theme";
-import { CONSTANTS } from "../constants";
+import { THEME } from "../../theme";
+import { CONSTANTS } from "../../constants";
 import { NONAME } from "dns";
 import styled from "@emotion/styled";
 import { Global, css } from '@emotion/react'
@@ -52,16 +52,12 @@ function getPadding(size: any) {
 
 let List = styled(Listbox)`
 	[data-reach-listbox-button] {
-		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-		border: none;
 		outline: none;
-	}
-	[data-reach-listbox-popover]:focus-within {
-		outline: none;
+		padding: 7px 12px;
 	}
 `;
 
-export const Dropdown = (props: ListProp) => {
+export const Select = (props: ListProp) => {
 	let style = {
 		fontSize: getFontSize(props.size),
 		padding: getPadding(props.size),
@@ -71,9 +67,23 @@ export const Dropdown = (props: ListProp) => {
 		<>
             <Global
             styles={css`
-                [data-reach-listbox-popover]:focus-within {
+                [data-reach-listbox-popover] {
                     outline: none;
+					line-height: 1;
+					padding: 0;
                 }
+				[data-reach-listbox-popover]:focus-within{
+					outline: none;
+					box-shadow: none;
+				}
+				[data-reach-listbox-option]{
+					padding: 6px 8px ;
+					transition:0.2s ease all;
+				}
+				[data-reach-listbox-option][data-current-nav] {
+					background: ${CONSTANTS.primaryColor};
+					color: hsl(0, 0%, 100%);
+				}
             `}
             />
 			<List
