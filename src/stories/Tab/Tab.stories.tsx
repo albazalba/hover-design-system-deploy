@@ -1,8 +1,8 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { withDesign } from "storybook-addon-designs";
-import { TabProps } from "./Tab";
-import DataTabs from "./Tab";
+import { TabProps } from "../../components/Tab/Tab";
+import DataTabs from "../../components/Tab/Tab";
 
 export default {
   title: "Components/Tab",

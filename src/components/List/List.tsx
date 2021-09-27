@@ -4,7 +4,7 @@ import { THEME } from "../../theme";
 import { CONSTANTS } from "../../constants";
 import { valueScaleCorrection } from "framer-motion/types/render/dom/projection/scale-correction";
 import { listenerCount } from "process";
-import ListStories from "../../stories/List.stories";
+import ListStories from "../../stories/List/List.stories";
 // import { rgba } from "../components/Helper";
 
 

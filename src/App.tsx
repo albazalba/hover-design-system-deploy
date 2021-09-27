@@ -1,5 +1,5 @@
 import "./App.css";
-import { Dropdown } from "./stories/Dropdown";
+import { Select } from "./components/Select/Select";
 
 function App() {
 	let options = [
@@ -16,12 +16,12 @@ function App() {
 
 	return (
 		<div className="app">
-			<Dropdown
+			{/* <Dropdown
 				defaultValue="frenchy"
 				options={options}
 				size={"small"}
 				onChange={onChange}
-			/>
+			/> */}
 		</div>
 	);
 }

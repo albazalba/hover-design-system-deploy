@@ -2,22 +2,22 @@ import React, { ChangeEvent } from "react";
 import { Story, Meta } from "@storybook/react";
 import { withDesign } from "storybook-addon-designs";
 
-import { Dropdown as DropdownComponent } from "./Dropdown";
+import { Select as SelectComponent} from "../../components/Select/Select";
 
 export default {
-	title: "Components/Dropdown",
-	component: DropdownComponent,
+	title: "Design system/Components/Select",
+	component: SelectComponent,
 	decorators: [withDesign],
 	argTypes: {
 		backgroundColor: { control: "color" },
 	},
 } as Meta;
 
-const DropdownTemplate: Story<any> = (args) => <DropdownComponent {...args} />;
+const SelectTemplate: Story<any> = (args) => <SelectComponent {...args} />;
 
-export const Dropdown = DropdownTemplate.bind({});
+export const Select = SelectTemplate.bind({});
 
-Dropdown.args = {
+Select.args = {
 	defaultValue: "frenchy",
 	options: [
 		{ value: "frenchy", label: "Frenchy" },

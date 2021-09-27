@@ -2,16 +2,16 @@ import React, { Children } from 'react';
 import {Story, Meta} from '@storybook/react';
 import {withDesign} from 'storybook-addon-designs';
 import styled from "@emotion/styled"
-import {List as ListComponent, ListItem, ListProps,ListItemIcon, List, ListItemText} from '../components/List/List';
+import {List as ListComponent, ListItem, ListProps,ListItemIcon, List, ListItemText} from '../../components/List/List';
 import {FiCheck} from 'react-icons/fi';
 import {AiFillHome, AiFillSetting} from 'react-icons/ai'
 import {MdAccountCircle} from 'react-icons/md'
 import {BiMessageAltDetail} from 'react-icons/bi'
-import reportWebVitals from '../reportWebVitals';
+import reportWebVitals from '../../reportWebVitals';
 import { homedir } from 'os';
 
 export default {
-  title: 'Components/List',
+  title: 'Design system/Components/List',
   component: ListComponent,
   decorators: [withDesign],
   argTypes: {

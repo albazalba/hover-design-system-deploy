@@ -3,7 +3,7 @@ import { withDesign } from "storybook-addon-designs";
 import styled from '@emotion/styled';
 import { css, jsx } from '@emotion/react';
 import {FiMoreVertical} from 'react-icons/fi'
-import { DropDown } from "../components/DropDown/MenuButton";
+import { DropDown } from "../../components/DropDown/DropDown";
 import {
 	Card as CardComponent,
 	CardBody,
@@ -11,11 +11,11 @@ import {
 	CardProps,
     CardMedia,
     CardHeader
-} from "../components/Card/Card";
-import { Button } from "../components/Button/Button";
+} from "../../components/Card/Card";
+import { Button } from "../../components/Button/Button";
 
 export default {
-	title: "Components/Card",
+	title: "Design system/Components/Card",
 	component: CardComponent,
 	decorators: [withDesign],
 	argTypes: {
@@ -37,7 +37,7 @@ Card.args = {
                 <CardHeader title="Title" subheader="Subheader" style={{fontSize:"50px"}}></CardHeader>
                 {/* <Button icon={<FiMoreVertical />} accent="secondary" variant="ghost"/>  */}
 				<DropDown
-					button={<FiMoreVertical />}
+					buttonName={<FiMoreVertical />}
 					buttonStyle={{border:"none", height:"45px", width:"45px", borderRadius:"50%", margin:"5px" }}
 					list={[
 						{ label: 'Frenchy', onSelect: () => console.log("hii")},
